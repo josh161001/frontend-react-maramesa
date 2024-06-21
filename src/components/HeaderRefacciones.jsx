@@ -2,6 +2,64 @@ import React from "react";
 import "./css/components.css";
 
 export const HeaderRefacciones = ({ sidebarExpanded, toggleSidebar }) => {
+  // const menuItem = [
+  //   {
+  //     name: "dashboad",
+  //     link: "/dashboard",
+  //     subMenu: [{}],
+
+  //     name: "Modulos",
+  //     link: "",
+  //     subMenu: [
+  //       {
+  //         name: "Talleres",
+  //         link: "/talleres",
+  //       },
+  //       {
+  //         name: "Catalogo",
+  //         link: "",
+  //         subMenu: [
+  //           {
+  //             name: "Catalogo 1",
+  //             link: "/catalogo1",
+  //           },
+  //           {
+  //             name: "Catalogo 2",
+  //             link: "/catalogo2",
+  //           },
+  //         ],
+  //       },
+  //       {
+  //         name: "Reportes",
+  //         link: "",
+  //         subMenu: [
+  //           {
+  //             name: "Reporte 1",
+  //             link: "/reporte1",
+  //           },
+  //           {
+  //             name: "Reporte 2",
+  //             link: "/reporte2",
+  //           },
+  //         ],
+  //       },
+  //       {
+  //         name: "Refacciones",
+  //         link: "",
+  //         subMenu: [
+  //           {
+  //             name: "Refaccion 1",
+  //             link: "/refaccion1",
+  //           },
+  //           {
+  //             name: "Refaccion 2",
+  //             link: "/refaccion2",
+  //           },
+  //         ],
+  //       },
+  //     ],
+  //   },
+  // ]; por trabajar en un map mas automatico
   return (
     <div className="ui menu">
       {!sidebarExpanded && (

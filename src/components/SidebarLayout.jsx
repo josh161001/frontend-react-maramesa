@@ -24,7 +24,7 @@ export const SidebarLayout = () => {
     refacciones: false,
   });
 
-  // Función para alternar la visibilidad de los dropdowns
+  // funcion para alternar la visibilidad de los dropdowns
   const toggleDropdown = (dropdownName) => {
     setDropdowns((prevDropdowns) => ({
       ...prevDropdowns,
@@ -179,8 +179,9 @@ export const SidebarLayout = () => {
           </ul>
         </div>
       </div>
+      {/* Aqui va el contenido principal */}
       <div className="wrapper__section">
-        {/* Aquí va tu contenido principal outlet */}
+        {/* header princpal */}
         <HeaderRefacciones
           sidebarExpanded={sidebarExpanded}
           toggleSidebar={toggleSidebar}
@@ -190,6 +191,7 @@ export const SidebarLayout = () => {
             padding: "1.4rem",
           }}
         >
+          {/* contenido  */}
           <Outlet />
         </div>
       </div>

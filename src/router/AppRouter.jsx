@@ -1,13 +1,13 @@
 import { Route, Routes } from "react-router-dom";
-import { RefaccionesLayout } from "../layout/RefaccionesLayout";
 import { Refacciones } from "../pages/refacciones/Refacciones";
 import { Categorias } from "../pages/categorias/Categorias";
+import { SidebarLayout } from "../layout/SidebarLayout";
 
 export const AppRouter = () => {
   return (
     <>
       <Routes>
-        <Route path="/sistema/" element={<RefaccionesLayout />}>
+        <Route path="/sistema/" element={<SidebarLayout />}>
           <Route path="refacciones" index element={<Refacciones />} />
           <Route path="categorias" element={<Categorias />} />
         </Route>

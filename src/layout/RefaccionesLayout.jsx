@@ -1,18 +1,14 @@
-import { Footer, HeaderRefacciones } from "../components";
+import { Footer, HeaderRefacciones, SidebarLayout } from "../components";
 import { Outlet } from "react-router-dom";
+import {} from "../components";
 
 export const RefaccionesLayout = () => {
   return (
     <div>
-      <HeaderRefacciones />
-      <div
-        className="ui container"
-        style={{
-          marginTop: "20px",
-        }}
-      >
-        <Outlet />
-      </div>
+      {/* <HeaderRefacciones /> */}
+      <SidebarLayout />
+
+      {/* <Outlet /> */}
       <Footer />
     </div>
   );

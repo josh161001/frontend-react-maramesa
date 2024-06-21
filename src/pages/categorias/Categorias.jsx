@@ -4,11 +4,14 @@ import axiosClient from "../../api/Axios";
 
 export const Categorias = () => {
   const [categorias, setCategorias] = useState([]);
-  const [filtroCategoria, setFiltroCategoria] = useState("");
   const [nuevaCategoria, setNuevaCategoria] = useState({
     nombre: "",
     id_padre: null,
   });
+
+  useEffect(() => {
+    obtenerCategorias();
+  }, []);
 
   // Obtener categorias desde la API
   const obtenerCategorias = async () => {
@@ -18,14 +21,6 @@ export const Categorias = () => {
     } catch (error) {
       console.log(error.response.data.error);
     }
-  };
-
-  useEffect(() => {
-    obtenerCategorias();
-  }, []);
-
-  const handleSearchChange = (e, { value }) => {
-    setFiltroCategoria(value);
   };
 
   //guardar categorias en el state
@@ -135,10 +130,6 @@ export const Categorias = () => {
             options={options}
             placeholder="Selecciona la categoría padre"
             search
-            searchInput={{
-              id: "form-select-control-categories",
-              onChange: handleSearchChange,
-            }}
           />
           <Form.Field
             style={{

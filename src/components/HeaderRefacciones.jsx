@@ -1,70 +1,100 @@
-import { Header, Segment } from "semantic-ui-react";
+import React from "react";
+import "./css/components.css";
 
-export const HeaderRefacciones = () => {
+export const HeaderRefacciones = ({ sidebarExpanded, toggleSidebar }) => {
   return (
     <div className="ui menu">
-      <a href="/" className="item">
-        <img
-          src="https://www.maramesasystem.com/_img/logo.png"
-          style={{
-            width: "100px",
-            height: "auto",
-            margin: "5px",
-          }}
-        />
-      </a>
-      <a className="item">
-        <i aria-hidden="true" className="users icon"></i>
-        Talleres
-      </a>
-      <a className="item">
-        <div>
-          Catalogos
-          <i
-            style={{
-              marginLeft: "5px",
-            }}
-            aria-hidden="true"
-            className="dropdown icon"
-          ></i>
+      {!sidebarExpanded && (
+        <>
+          <div className="item">
+            <button
+              className="sidebar__toggle"
+              onClick={toggleSidebar}
+              style={{
+                border: "none",
+                color: "white",
+                fontSize: "1rem",
+                cursor: "pointer",
+                backgroundColor: "#333F57",
+                padding: "0.3rem",
+                borderRadius: "5px",
+              }}
+            >
+              <i
+                className="angle double right icon"
+                style={{ color: "#586075" }}
+              ></i>
+            </button>
+          </div>
+          <div className="item link">
+            <img
+              src="https://www.maramesasystem.com/_img/logo.png"
+              alt="Logo"
+              style={{ width: "120px" }}
+            />
+          </div>
+        </>
+      )}
+
+      <div className="item link">Dashboard</div>
+
+      <div>
+        <div class="ui item link ">
+          <div role="listbox" class="ui simple dropdown item link" tabindex="0">
+            Modulos
+            <i aria-hidden="true" class="dropdown icon"></i>
+            <div class="menu transition">
+              <div role="option" class="item">
+                Talleres
+              </div>
+              <div role="option" class="item">
+                <i aria-hidden="true" class="dropdown icon"></i>
+                <span class="text">Catalogo</span>
+                <div class="menu transition">
+                  <div role="option" class="item">
+                    Catalago 1
+                  </div>
+                  <div role="option" class="item">
+                    Catalogo 2
+                  </div>
+                </div>
+              </div>
+              <div role="option" class="item">
+                <i aria-hidden="true" class="dropdown icon"></i>
+                <span class="text">Reportes</span>
+                <div class="menu transition">
+                  <div role="option" class="item">
+                    Reporte 1
+                  </div>
+                  <div role="option" class="item">
+                    Reporte 2
+                  </div>
+                </div>
+              </div>
+              <div role="option" class="item">
+                <i aria-hidden="true" class="dropdown icon"></i>
+                <span class="text">Refacciones</span>
+                <div class="menu transition">
+                  <div role="option" class="item">
+                    Refaccion 1
+                  </div>
+                  <div role="option" class="item">
+                    Refaccion 2
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </a>
-      <a className="item">
-        <div>
-          Reportes
-          <i
-            style={{
-              marginLeft: "5px",
-            }}
-            aria-hidden="true"
-            className="dropdown icon"
-          ></i>
-        </div>
-      </a>
-      <a className="item">
-        <div>
-          Refacciones
-          <i
-            style={{
-              marginLeft: "5px",
-            }}
-            aria-hidden="true"
-            className="dropdown icon"
-          ></i>
-        </div>
-      </a>
+      </div>
+
       <div className="right menu">
-        <div className="ui search item link ">
-          <div
-            className="ui icon input"
-            style={{
-              borderRadius: "5px",
-            }}
-          >
+        <div className="ui search item link">
+          <div className="ui icon input" style={{ borderRadius: "5px" }}>
             <input
               type="text"
               autoComplete="off"
-              placeholder="Busqueda de talleres..."
+              placeholder="Búsqueda de talleres..."
               onChange={() => {}}
             />
             <i aria-hidden="true" className="search icon"></i>
@@ -73,21 +103,11 @@ export const HeaderRefacciones = () => {
         <div className="item link">
           <i aria-hidden="true" className="bell icon"></i>
         </div>
-        <div
-          role="listbox"
-          aria-expanded="false"
-          className="ui left pointing dropwdown link item"
-          tabIndex="0"
-        >
-          <div
-            aria-atomic="true"
-            aria-live="polite"
-            role="alert"
-            className="divider text"
-          >
+        <div className="ui left pointing dropdown link item">
+          <div className="divider text" role="alert">
             Jorge Michelle Martinez
           </div>
-          <i aria-hidden="true" className="dropdown icon"></i>
+          <i className="dropdown icon"></i>
         </div>
       </div>
     </div>

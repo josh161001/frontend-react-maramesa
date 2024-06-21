@@ -94,7 +94,7 @@ export const HeaderRefacciones = ({ sidebarExpanded, toggleSidebar }) => {
         </>
       )}
 
-      <div className="item link">Dashboard</div>
+      {/* <div className="item link">Dashboard</div>
 
       <div>
         <div class="ui item link ">
@@ -144,10 +144,15 @@ export const HeaderRefacciones = ({ sidebarExpanded, toggleSidebar }) => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
-      <div className="right menu">
-        <div className="ui search item link">
+      <div
+        className="right menu"
+        style={{
+          padding: ".5rem",
+        }}
+      >
+        {/* <div className="ui search item link">
           <div className="ui icon input" style={{ borderRadius: "5px" }}>
             <input
               type="text"
@@ -157,15 +162,15 @@ export const HeaderRefacciones = ({ sidebarExpanded, toggleSidebar }) => {
             />
             <i aria-hidden="true" className="search icon"></i>
           </div>
-        </div>
+        </div> */}
         <div className="item link">
           <i aria-hidden="true" className="bell icon"></i>
         </div>
         <div className="ui left pointing dropdown link item">
-          <div className="divider text" role="alert">
+          {/* <div className="divider text" role="alert">
             Jorge Michelle Martinez
-          </div>
-          <i className="dropdown icon"></i>
+          </div> */}
+          <i class="user circle icon"></i>{" "}
         </div>
       </div>
     </div>

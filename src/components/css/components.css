@@ -20,8 +20,8 @@
 }
 
 .wrapper .wrapper__sidebar .wrapper__sidebar__logo {
-  margin-top: 20px;
-  padding-bottom: 20px;
+  margin-top: 10px;
+  padding-bottom: 18px;
   text-align: center;
   display: flex;
   align-items: center;
@@ -30,7 +30,7 @@
 }
 
 .wrapper .wrapper__sidebar .wrapper__sidebar__logo img {
-  width: 60%;
+  width: 50%;
   height: 100%;
 }
 

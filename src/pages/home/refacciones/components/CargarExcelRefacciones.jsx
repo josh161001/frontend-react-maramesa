@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axiosClient from "../../../api/Axios";
+import axiosClient from "../../../../api/Axios";
 
 export const CargarExcelRefacciones = ({ setMessage }) => {
   const [selectFile, setSelectFile] = useState(null);
@@ -33,9 +33,11 @@ export const CargarExcelRefacciones = ({ setMessage }) => {
         }
       );
 
-      console.log("Respuesta al importar excel:", respuesta.data);
-
       setMessage({ text: "Refacciones importadas con éxito", type: "success" });
+
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
     } catch (error) {
       setMessage({
         text:

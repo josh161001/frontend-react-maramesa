@@ -177,7 +177,7 @@ export const SidebarLayout = () => {
                 {dropdowns.refacciones && (
                   <ul className="submenu">
                     <li>
-                      <a href="#">Refacción 1</a>
+                      <a href="/sistema/refacciones">Refacción 1</a>
                     </li>
                     <li>
                       <a href="#">Refacción 2</a>
@@ -197,7 +197,7 @@ export const SidebarLayout = () => {
           />
           <div
             style={{
-              padding: "1.4rem",
+              padding: "1rem",
             }}
           >
             {/* contenido  */}

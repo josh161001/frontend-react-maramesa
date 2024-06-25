@@ -170,7 +170,7 @@ export const HeaderRefacciones = ({ sidebarExpanded, toggleSidebar }) => {
           {/* <div className="divider text" role="alert">
             Jorge Michelle Martinez
           </div> */}
-          <i class="user circle icon"></i>{" "}
+          <i className="user circle icon"></i>{" "}
         </div>
       </div>
     </div>

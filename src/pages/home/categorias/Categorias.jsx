@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Button, Form, Input, Select } from "semantic-ui-react";
-import axiosClient from "../../api/Axios";
+import axiosClient from "../../../api/Axios";
+import { MensajeAlerta } from "../../../components";
 
 export const Categorias = () => {
+  const [message, setMessage] = useState({ text: "", type: "" });
   const [categorias, setCategorias] = useState([]);
   const [nuevaCategoria, setNuevaCategoria] = useState({
     nombre: "",
@@ -55,6 +57,12 @@ export const Categorias = () => {
       // Actualizar la lista de categorías mostradas
       obtenerCategorias();
 
+      // Mostrar mensaje de éxito
+      setMessage({
+        text: "Categoría creada con éxito",
+        type: "success",
+      });
+
       // Limpiar el formulario después de crear la categoría
       setNuevaCategoria({
         nombre: "",
@@ -62,6 +70,10 @@ export const Categorias = () => {
       });
     } catch (error) {
       console.log(error.response.data.error);
+      setMessage({
+        text: error.response?.data?.error || "Error al crear la categoría.",
+        type: "error",
+      });
     }
   };
 
@@ -72,7 +84,7 @@ export const Categorias = () => {
         key: "default",
         text: "Selecciona la categoría padre",
         value: "",
-        disabled: false, // Opción deshabilitada
+        disabled: false,
       },
     ];
 
@@ -98,52 +110,54 @@ export const Categorias = () => {
   const options = subcategoriasRecursivas(categorias);
 
   return (
-    <div
-      className="ui middle aligned center aligned grid"
-      style={{ height: "80vh" }}
-    >
-      <div className="column" style={{ maxWidth: "450px" }}>
-        <h2 className="ui image header">
-          <div className="content">Agregar Nueva Categoría</div>
-        </h2>
-        <Form
-          size="large"
-          className="ui stacked segment"
-          onSubmit={guardarCategoria}
-        >
-          <Form.Field
-            id="form-input-control-categories"
-            control={Input}
-            name="nombre"
-            value={nuevaCategoria.nombre}
-            onChange={categoriasState}
-            label="Categoría"
-            placeholder="Escribe la nueva categoría..."
-            required
-          />
-          <Form.Field
-            control={Select}
-            name="id_padre"
-            value={nuevaCategoria.id_padre}
-            onChange={categoriasState}
-            label="Categoría padre (si requiere)"
-            options={options}
-            placeholder="Selecciona la categoría padre"
-            search
-          />
-          <Form.Field
-            style={{
-              width: "100%",
-              justifyContent: "center",
-            }}
-            id="form-button-control-public"
-            control={Button}
-            content="Guardar"
-            color="green"
-            disabled={validarInputCategoria()}
-            type="submit"
-          />
-        </Form>
+    <div>
+      <MensajeAlerta message={message} setMessage={setMessage} />
+      <div
+        className="ui middle aligned center aligned grid"
+        style={{ height: "80vh" }}
+      >
+        <div className="column" style={{ maxWidth: "450px" }}>
+          <h2 className="ui image header">
+            <div className="content">Agregar Nueva Categoría</div>
+          </h2>
+
+          <form className="ui form large stacked segment">
+            <div className="field">
+              <label>Nombre de la categoría</label>
+              <input
+                type="text"
+                name="nombre"
+                value={nuevaCategoria.nombre}
+                onChange={categoriasState}
+                placeholder="Nombre de la categoría"
+              />
+            </div>
+            <div className="field">
+              <label>Categoría padre (si requiere)</label>
+              <div></div>
+              <Select
+                name="id_padre"
+                value={nuevaCategoria.id_padre}
+                onChange={categoriasState}
+                options={options}
+                placeholder="Selecciona la categoría padre"
+                search
+              />
+            </div>
+            <button
+              className="ui button green"
+              type="submit"
+              onClick={guardarCategoria}
+              disabled={validarInputCategoria()}
+              style={{
+                width: "100%",
+                justifyContent: "center",
+              }}
+            >
+              Guardar
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );

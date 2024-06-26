@@ -63,12 +63,11 @@ export const Linea = () => {
   const eliminarLinea = async (id) => {
     try {
       const respuesta = await axiosClient.delete(`/lineas/${id}`);
-      console.log("Marca eliminada:", respuesta.data);
 
       obtenerLinea();
 
       setMessage({
-        text: "Marca eliminada con éxito",
+        text: "Linea eliminada con éxito",
         type: "success",
       });
     } catch (error) {

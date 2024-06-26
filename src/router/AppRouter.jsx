@@ -5,6 +5,7 @@ import { SidebarLayout } from "../layout/SidebarLayout";
 import { EditarRefaccion } from "../pages/home/refacciones/EditarRefaccion";
 import { Marcas } from "../pages/home/marcas/Marcas";
 import { Linea } from "../pages/home/linea/Linea";
+import { Clave_Sat } from "../pages/home/clave_sat/Clave_SAT";
 
 export const AppRouter = () => {
   return (
@@ -19,6 +20,7 @@ export const AppRouter = () => {
           <Route path="categorias" element={<Categorias />} />
           <Route path="marcas" element={<Marcas />} />
           <Route path="lineas" element={<Linea />} />
+          <Route path="clave-sat" element={<Clave_Sat />} />
         </Route>
 
         <Route path="/" element={<h1>Inicio</h1>} />

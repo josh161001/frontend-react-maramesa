@@ -33,6 +33,7 @@ export const ModalRefaccion = () => {
     herramientas: "",
     sintomas_fallas: "",
     intercambios: "",
+    position: "",
     url_multimedia: [],
   });
 
@@ -143,8 +144,41 @@ export const ModalRefaccion = () => {
     });
   };
 
-  console.log(nuevaRefaccion);
+  const validarRefaccion = () => {
+    const {
+      estatus,
+      modelo,
+      sku,
+      cantidad,
+      id_categoria,
+      id_marca,
+      id_linea,
+      id_clave_sat,
+      descripcion,
+      informacion,
+      herramientas,
+      sintomas_fallas,
+      intercambios,
+      position,
+    } = nuevaRefaccion;
 
+    return (
+      !estatus ||
+      !modelo ||
+      !sku ||
+      !cantidad ||
+      !id_categoria ||
+      !id_marca ||
+      !id_linea ||
+      !id_clave_sat ||
+      !descripcion ||
+      !informacion ||
+      !herramientas ||
+      !sintomas_fallas ||
+      !intercambios ||
+      !position
+    );
+  };
   const guardarRefaccion = async (e) => {
     e.preventDefault();
 
@@ -163,6 +197,7 @@ export const ModalRefaccion = () => {
       formData.append("herramientas", nuevaRefaccion.herramientas);
       formData.append("sintomas_fallas", nuevaRefaccion.sintomas_fallas);
       formData.append("intercambios", nuevaRefaccion.intercambios);
+      formData.append("position", nuevaRefaccion.position);
 
       // Agregar archivos multimedia a formData
       for (let i = 0; i < nuevaRefaccion.url_multimedia.length; i++) {
@@ -355,6 +390,13 @@ export const ModalRefaccion = () => {
                 onChange={handleRefaccionChange}
                 placeholder="Escribe los intercambios..."
                 required
+              />{" "}
+              <Form.TextArea
+                name="position"
+                label="Posición"
+                onChange={handleRefaccionChange}
+                placeholder="Escribe la posicion..."
+                required
               />
             </Form.Group>
             <FormField
@@ -377,6 +419,7 @@ export const ModalRefaccion = () => {
                 icon="checkmark"
                 positive
                 type="submit"
+                disabled={validarRefaccion()}
               />
             </ModalActions>
           </Form>

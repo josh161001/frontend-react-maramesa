@@ -30,6 +30,7 @@ export const EditarRefaccion = () => {
     sintomas_fallas: "",
     intercambios: "",
     estatus: "",
+    position: "",
   });
   const [archivos, setArchivos] = useState([]);
   const [archivosNuevos, setArchivosNuevos] = useState([]);
@@ -155,6 +156,42 @@ export const EditarRefaccion = () => {
     setActiveTab(tabNum);
   };
 
+  const validarRefaccion = () => {
+    const {
+      modelo,
+      sku,
+      cantidad,
+      id_categoria,
+      id_marca,
+      id_linea,
+      id_clave_sat,
+      descripcion,
+      informacion,
+      herramientas,
+      sintomas_fallas,
+      intercambios,
+      estatus,
+      position,
+    } = refaccion;
+
+    return (
+      !modelo ||
+      !sku ||
+      !cantidad ||
+      !id_categoria ||
+      !id_marca ||
+      !id_linea ||
+      !id_clave_sat ||
+      !descripcion ||
+      !informacion ||
+      !herramientas ||
+      !sintomas_fallas ||
+      !intercambios ||
+      !estatus ||
+      !position
+    );
+  };
+
   const guardarRefaccion = async (e) => {
     e.preventDefault();
 
@@ -173,6 +210,7 @@ export const EditarRefaccion = () => {
         sintomas_fallas,
         intercambios,
         estatus,
+        position,
       } = refaccion;
 
       const refaccionData = {
@@ -189,6 +227,7 @@ export const EditarRefaccion = () => {
         sintomas_fallas,
         intercambios,
         estatus,
+        position,
       };
 
       const respuesta = await axiosClient.put(
@@ -522,6 +561,14 @@ export const EditarRefaccion = () => {
                       value={refaccion.intercambios}
                       onChange={handleRefaccionChange}
                       placeholder="Escribe los intercambios..."
+                      required
+                    />
+                    <Form.TextArea
+                      name="position"
+                      label="Posición"
+                      value={refaccion.position}
+                      onChange={handleRefaccionChange}
+                      placeholder="Escribe la posicion..."
                       required
                     />
                   </Form.Group>

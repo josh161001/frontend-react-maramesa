@@ -16,7 +16,10 @@ export const Marcas = () => {
       const respuesta = await axiosClient.get("/marcas");
       setMarcas(respuesta.data);
     } catch (error) {
-      console.log(error.response.data.error);
+      setMessage({
+        text: error.response?.data?.message || "Error al obtener las marcas",
+        type: "error",
+      });
     }
   };
 
@@ -45,16 +48,13 @@ export const Marcas = () => {
       };
 
       const respuesta = await axiosClient.post("/marcas", marcaData);
-      console.log("Marca creada:", respuesta.data);
 
       obtenerMarcas();
-
       setMessage({
         text: "Marca creada con éxito",
         type: "success",
       });
     } catch (error) {
-      console.log();
       setMessage({
         text: error.response?.data?.message || "Error al crear la marca",
         type: "error",
@@ -65,16 +65,13 @@ export const Marcas = () => {
   const eliminarMarca = async (id) => {
     try {
       const respuesta = await axiosClient.delete(`/marcas/${id}`);
-      console.log("Marca eliminada:", respuesta.data);
 
       obtenerMarcas();
-
       setMessage({
         text: "Marca eliminada con éxito",
         type: "success",
       });
     } catch (error) {
-      console.log(error);
       setMessage({
         text: error.response?.data?.message,
         type: "error",
